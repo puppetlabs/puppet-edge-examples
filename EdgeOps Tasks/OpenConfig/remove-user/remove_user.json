@@ -1,0 +1,17 @@
+{
+  "description": "Remove a user from the device using OpenConfig system model.",
+  "input_method": "stdin",
+  "files": [
+    "edgeops/files/task_helper.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/client.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/session.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/redactor.rb"
+  ],
+  "remote": false,
+  "parameters": {
+    "username": {
+      "description": "Username to remove from the device.",
+      "type": "String"
+    }
+  }
+}

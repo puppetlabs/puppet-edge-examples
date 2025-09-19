@@ -1,0 +1,30 @@
+{
+  "description": "Create a user and add an SSH key using OpenConfig system model.",
+  "input_method": "stdin",
+  "files": [
+    "edgeops/files/task_helper.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/client.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/session.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/redactor.rb"
+  ],
+  "remote": false,
+  "parameters": {
+    "username": {
+      "description": "Username to create.",
+      "type": "String"
+    },
+    "password": {
+      "description": "Password for the user (cleartext or hash). Either password or ssh_key must be provided.",
+      "type": "Optional[String]",
+      "sensitive": true
+    },
+    "ssh_key": {
+      "description": "SSH public key to add for the user. Either password or ssh_key must be provided.",
+      "type": "Optional[String]"
+    },
+    "role": {
+      "description": "Role for the user (required by OpenConfig AAA model). Common values: 'SYSTEM_ROLE_ADMIN' (OpenConfig standard), 'network-admin', 'network-operator'. Use 'bolt task run hal::discover_roles' to find available roles on your device.",
+      "type": "String"
+    }
+  }
+}

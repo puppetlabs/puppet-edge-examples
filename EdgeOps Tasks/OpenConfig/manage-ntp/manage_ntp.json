@@ -1,0 +1,26 @@
+{
+  "description": "Enable and manage NTP timeservers using OpenConfig on a NETCONF device.",
+  "input_method": "stdin",
+  "files": [
+    "edgeops/files/task_helper.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/client.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/session.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/redactor.rb"
+  ],
+  "remote": false,
+  "parameters": {
+    "servers": {
+      "description": "List of NTP server IPs or hostnames to configure.",
+      "type": "Array[String]"
+    },
+    "enabled": {
+      "description": "Enable or disable NTP globally.",
+      "type": "Boolean",
+      "default": true
+    },
+    "prefer": {
+      "description": "Preferred NTP server (optional).",
+      "type": "Optional[String]"
+    }
+  }
+}
