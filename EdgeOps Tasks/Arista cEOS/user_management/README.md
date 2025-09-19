@@ -1,6 +1,8 @@
 # User Management Module for Puppet EdgeOps
 
-This module provides example NETCONF tasks for managing user accounts on network devices. It is designed to be used with the Puppet EdgeOps Module, enabling automated user management through standardized workflows.
+This module provides example NETCONF tasks for managing user accounts on Arista cEOS devices. It is designed to be used with the Puppet EdgeOps Module, enabling automated user management through standardized workflows.
+
+🤖 **AI-Assisted:** These examples were generated using Puppet Edge and the Puppet Edge MCP server.
 
 ## Purpose
 
