@@ -1,0 +1,29 @@
+{
+  "description": "Configure VLAN with name, id, description, and routing IP addresses using OpenConfig models.",
+  "input_method": "stdin",
+  "files": [
+    "edgeops/files/task_helper.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/client.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/session.rb",
+    "edgeops/lib/puppet_x/puppetlabs/netconf/redactor.rb"
+  ],
+  "remote": false,
+  "parameters": {
+    "vlan_id": {
+      "description": "VLAN ID (1-4094)",
+      "type": "Integer[1,4094]"
+    },
+    "name": {
+      "description": "VLAN name",
+      "type": "String"
+    },
+    "description": {
+      "description": "VLAN description",
+      "type": "Optional[String]"
+    },
+    "routing_ips": {
+      "description": "Array of routing IP addresses (e.g., [\"192.0.2.1/24\", \"2001:db8::1/64\"])",
+      "type": "Optional[Array[String]]"
+    }
+  }
+}
