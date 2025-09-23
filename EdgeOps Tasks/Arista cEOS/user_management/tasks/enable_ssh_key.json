@@ -1,0 +1,43 @@
+{
+    "description": "Enable a user SSH public key for login via NETCONF using OpenConfig models",
+    "input_method": "stdin",
+    "files": [
+        "edgeops/files/task_helper.rb",
+        "edgeops/lib/puppet_x/puppetlabs/netconf/client.rb",
+        "edgeops/lib/puppet_x/puppetlabs/netconf/session.rb",
+        "edgeops/lib/puppet_x/puppetlabs/netconf/redactor.rb"
+    ],
+    "remote": false,
+    "parameters": {
+        "username": {
+            "description": "Local user account to which the SSH key will be added",
+            "type": "String"
+        },
+        "public_key": {
+            "description": "SSH public key string (e.g. 'ssh-rsa AAAAB3... user@host')",
+            "type": "String"
+        },
+        "key_name": {
+            "description": "Optional name/label for the key on the device",
+            "type": "Optional[String]"
+        },
+        "description": {
+            "description": "Optional description for the key",
+            "type": "Optional[String]"
+        },
+        "target": {
+            "description": "NETCONF datastore to edit",
+            "type": "Enum[running, candidate]",
+            "default": "candidate"
+        },
+        "commit": {
+            "description": "Whether to commit the candidate datastore after edit (only relevant when target='candidate')",
+            "type": "Boolean",
+            "default": true
+        },
+        "redact_patterns": {
+            "description": "Additional patterns to redact from logs/outputs",
+            "type": "Optional[Array[String]]"
+        }
+    }
+}
