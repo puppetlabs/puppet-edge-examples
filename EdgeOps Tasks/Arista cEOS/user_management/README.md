@@ -14,6 +14,7 @@ The `tasks` subfolder contains individual NETCONF task examples, each demonstrat
 
 - Creating a new user account
 - Deleting existing user accounts
+- Enabling an SSH Key on a user account
 
 Each task is self-contained and can be used as a reference or integrated into your own automation workflows.
 

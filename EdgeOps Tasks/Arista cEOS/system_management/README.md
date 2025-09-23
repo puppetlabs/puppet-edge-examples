@@ -12,6 +12,7 @@ The System Management module examples help network administrators automate the c
 
 The `tasks` subfolder contains individual NETCONF task examples, each demonstrating a specific system management action. Currently, the available example covers:
 
+- Updating the system admin password on a device
 - Managing NTP servers
 
 Each task is self-contained and can be used as a reference or integrated into your own automation workflows.
