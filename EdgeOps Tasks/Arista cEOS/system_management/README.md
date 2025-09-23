@@ -14,6 +14,7 @@ The `tasks` subfolder contains individual NETCONF task examples, each demonstrat
 
 - Updating the system admin password on a device
 - Managing NTP servers
+- Configuring a VLAN on a device
 
 Each task is self-contained and can be used as a reference or integrated into your own automation workflows.
 
