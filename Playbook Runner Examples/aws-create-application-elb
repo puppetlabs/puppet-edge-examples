@@ -1,0 +1,26 @@
+- name: Create an Application Load Balancer
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Create ALB
+      amazon.aws.elb_application_lb:
+        name: my-application-elb
+        state: present
+        subnets:
+          - subnet-12345678
+          - subnet-87654321
+        security_groups:
+          - sg-12345678
+        scheme: internet-facing
+        ip_address_type: ipv4
+        listeners:
+          - protocol: HTTP
+            port: 80
+            default_actions:
+              - type: forward
+                target_group_arn: arn:aws:elasticloadbalancing:region:account-id:targetgroup/my-target-group/1234567890abcdef
+        region: us-east-1
+      register: alb_result
+
+    - debug:
+        var: alb_result
