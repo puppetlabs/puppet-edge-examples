@@ -23,15 +23,16 @@
         scheme: internet-facing
         ip_address_type: ipv4
         listeners:
-          - protocol: HTTP
-            port: 80
-            default_actions:
-              - type: fixed-response
-                fixed_response:
-                  content_type: text/plain
-                  message_body: "ALB is running"
-                  status_code: "200"
+          - Protocol: HTTP
+            Port: 80
+            DefaultActions:
+              - Type: fixed-response
+                FixedResponseConfig:
+                  ContentType: text/plain
+                  MessageBody: "ALB is running"
+                  StatusCode: "200"
         region: "{{ aws_region }}"
+        wait: true
       register: alb_result
 
     - name: Show ALB DNS Name
