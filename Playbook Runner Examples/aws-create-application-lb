@@ -8,8 +8,8 @@
     alb_name: "demo-alb"               # Can be overridden with --extra-vars "alb_name=my-custom-alb"
     aws_region: "us-east-1"            # Can be overridden with --extra-vars "aws_region=us-west-2"
     vpc_subnets:                       # Can be overridden with --extra-vars '{"vpc_subnets": ["subnet-xxxxx", "subnet-yyyyy"]}'
-      - subnet-12345678
-      - subnet-87654321
+      - subnet-12345678               # Example subnet-id for us-east-1a
+      - subnet-87654321               # Example subnet-id for us-east-1b
     security_group: "sg-12345678"      # Can be overridden with --extra-vars "security_group=sg-xxxxx"
 
   tasks:
