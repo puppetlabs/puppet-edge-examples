@@ -1,0 +1,40 @@
+---
+# Simple example of creating an AWS Application Load Balancer (Day 0)
+- name: Create a basic Application Load Balancer
+  hosts: localhost
+  gather_facts: no
+
+  vars:
+    alb_name: "demo-alb"               # Can be overridden with --extra-vars "alb_name=my-custom-alb"
+    aws_region: "us-east-1"            # Can be overridden with --extra-vars "aws_region=us-west-2"
+    vpc_subnets:                       # Can be overridden with --extra-vars '{"vpc_subnets": ["subnet-xxxxx", "subnet-yyyyy"]}'
+      - subnet-12345678               # Example subnet-id for us-east-1a
+      - subnet-87654321               # Example subnet-id for us-east-1b
+    security_group: "sg-12345678"      # Can be overridden with --extra-vars "security_group=sg-xxxxx"
+
+  tasks:
+    - name: Create ALB
+      amazon.aws.elb_application_lb:
+        name: "{{ alb_name }}"
+        state: present
+        subnets: "{{ vpc_subnets }}"
+        security_groups:
+          - "{{ security_group }}"
+        scheme: internet-facing
+        ip_address_type: ipv4
+        listeners:
+          - Protocol: HTTP
+            Port: 80
+            DefaultActions:
+              - Type: fixed-response
+                FixedResponseConfig:
+                  ContentType: text/plain
+                  MessageBody: "ALB is running"
+                  StatusCode: "200"
+        region: "{{ aws_region }}"
+        wait: true
+      register: alb_result
+
+    - name: Show ALB DNS Name
+      debug:
+        msg: "ALB DNS Name: {{ alb_result.dns_name }}"
