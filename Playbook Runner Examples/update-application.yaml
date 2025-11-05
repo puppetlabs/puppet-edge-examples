@@ -4,7 +4,7 @@
   become: yes
   tasks:
     - name: Update nginx
-      apt:
+      yum:
         name: nginx
         state: latest
         update_cache: yes
